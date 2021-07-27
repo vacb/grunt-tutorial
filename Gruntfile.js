@@ -82,4 +82,11 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks("grunt-contrib-cssmin");
 
   grunt.loadNpmTasks("grunt-contrib-htmlmin");
+
+  // Combine tasks to run with one command by adding to the array
+  // First argument is the alias
+  // Second argument is the array of tasks
+  // If you set the alias to 'default' then you can just run by typing 'grunt'
+  // i.e: grunt.registerTask("default", ["uglify", "cssmin", "htmlmin"]);
+  grunt.registerTask("compress", ["uglify", "cssmin", "htmlmin"]);
 };
