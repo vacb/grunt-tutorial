@@ -15,5 +15,7 @@
     "grunt-contrib-htmlmin": "^3.1.0",
     "grunt-contrib-uglify": "^5.0.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "grunt-contrib-watch": "^1.1.0"
+  }
 }

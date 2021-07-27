@@ -65,6 +65,12 @@ module.exports = function (grunt) {
         ],
       },
     },
+    watch: {
+      // File types to watch:
+      files: ["src/*.html", "src/*.css", "src/*.js"],
+      // Tasks to run if changes are saved:
+      tasks: ["uglify", "cssmin", "htmlmin"],
+    },
   });
 
   // Load the plugin using the loadNpmTasks method
@@ -89,4 +95,6 @@ module.exports = function (grunt) {
   // If you set the alias to 'default' then you can just run by typing 'grunt'
   // i.e: grunt.registerTask("default", ["uglify", "cssmin", "htmlmin"]);
   grunt.registerTask("compress", ["uglify", "cssmin", "htmlmin"]);
+
+  grunt.loadNpmTasks("grunt-contrib-watch");
 };
