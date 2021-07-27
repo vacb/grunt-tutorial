@@ -70,6 +70,22 @@ module.exports = function (grunt) {
       files: ["src/*.html", "src/*.css", "src/*.js"],
       // Tasks to run if changes are saved:
       tasks: ["uglify", "cssmin", "htmlmin"],
+      options: {
+        livereload: true,
+      },
+    },
+    connect: {
+      server: {
+        options: {
+          port: 8000,
+          base: {
+            path: "build/",
+            options: {
+              index: "index.html",
+            },
+          },
+        },
+      },
     },
   });
 
@@ -97,4 +113,8 @@ module.exports = function (grunt) {
   grunt.registerTask("compress", ["uglify", "cssmin", "htmlmin"]);
 
   grunt.loadNpmTasks("grunt-contrib-watch");
+
+  grunt.loadNpmTasks("grunt-contrib-connect");
+
+  grunt.registerTask("default", ["connect", "watch"]);
 };
