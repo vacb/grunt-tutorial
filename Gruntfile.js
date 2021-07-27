@@ -1,3 +1,5 @@
+// Require/import necessary modules to use in your own task functions here
+
 module.exports = function (grunt) {
   grunt.initConfig({
     package: grunt.file.readJSON("package.json"),
@@ -117,4 +119,18 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks("grunt-contrib-connect");
 
   grunt.registerTask("default", ["connect", "watch"]);
+
+  // Create and register your own tasks - name/description/function
+  // To enter the argument, when you run task add with : i.e. grunt myTask:arg1:arg2 etc
+  grunt.registerTask(
+    "myTask",
+    "My basic task description",
+    function (arg1, arg2) {
+      grunt.log.writeln(
+        `Hello! The arguments entered were: '${arg1}' and '${arg2}'`
+      );
+      // Can also run existing tasks using grunt.task.run
+      grunt.task.run("htmlmin");
+    }
+  );
 };
