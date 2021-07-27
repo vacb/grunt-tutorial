@@ -19,4 +19,8 @@ module.exports = function (grunt) {
   // Load the plugin using the loadNpmTasks method
   grunt.loadNpmTasks("grunt-contrib-uglify");
   // To compress, run 'grunt uglify'
+
+  // Can set aliases for tasks to run them under different commands
+  // Use registerTask method, arguments are alias name and real task name
+  grunt.registerTask("compressJS", "uglify");
 };
