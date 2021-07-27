@@ -3,13 +3,30 @@ module.exports = function (grunt) {
     package: grunt.file.readJSON("package.json"),
     // Refer to plugins
     uglify: {
-      target: {
+      target1: {
         files: [
           {
             // Source file
-            src: "src/test.js",
+            // To concatenate JS files, pass an array of files instead of a string
+            src: ["src/test.js", "src/anothertest.js"],
             // Path to create compressed file
-            dest: "build/test.min.js",
+            dest: "build/firstconcat.min.js",
+          },
+          {
+            // Can add another output that concats different files
+            src: ["src/anothertest.js", "src/yetanothertest.js"],
+            dest: "build/secondconcat.min.js",
+          },
+        ],
+      },
+      // Can add multiple targets - choose which target to run when running the task
+      // eg: grunt uglify:target2 or grunt uglify: target1
+      target2: {
+        files: [
+          {
+            // Target multiple files with names ending in .js
+            src: ["src/*.js"],
+            dest: "build/alljsfiles.min.js",
           },
         ],
       },
@@ -23,4 +40,8 @@ module.exports = function (grunt) {
   // Can set aliases for tasks to run them under different commands
   // Use registerTask method, arguments are alias name and real task name
   grunt.registerTask("compressJS", "uglify");
+
+  // Can also set aliases for subtasks
+  grunt.registerTask("compressPartials", "uglify:target1");
+  grunt.registerTask("compressAll", "uglify:target2");
 };
