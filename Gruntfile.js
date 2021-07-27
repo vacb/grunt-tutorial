@@ -1,8 +1,22 @@
 module.exports = function (grunt) {
   grunt.initConfig({
-    task1: {},
-    task2: {},
-    randomProp: "value",
     package: grunt.file.readJSON("package.json"),
+    // Refer to plugins
+    uglify: {
+      target: {
+        files: [
+          {
+            // Source file
+            src: "src/test.js",
+            // Path to create compressed file
+            dest: "build/test.min.js",
+          },
+        ],
+      },
+    },
   });
+
+  // Load the plugin using the loadNpmTasks method
+  grunt.loadNpmTasks("grunt-contrib-uglify");
+  // To compress, run 'grunt uglify'
 };
