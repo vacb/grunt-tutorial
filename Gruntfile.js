@@ -52,6 +52,19 @@ module.exports = function (grunt) {
         ],
       },
     },
+    htmlmin: {
+      options: {
+        collapseWhitespace: true,
+      },
+      target: {
+        files: [
+          {
+            src: "src/index.html",
+            dest: "build/index.html",
+          },
+        ],
+      },
+    },
   });
 
   // Load the plugin using the loadNpmTasks method
@@ -67,4 +80,6 @@ module.exports = function (grunt) {
   grunt.registerTask("compressAll", "uglify:target2");
 
   grunt.loadNpmTasks("grunt-contrib-cssmin");
+
+  grunt.loadNpmTasks("grunt-contrib-htmlmin");
 };
