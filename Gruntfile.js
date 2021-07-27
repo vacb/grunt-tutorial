@@ -29,13 +29,15 @@ module.exports = function (grunt) {
       target2: {
         // Can also add options in individual targets - this will have priority
         options: {
-          banner: "const b = 'in target 2 only';",
+          // Can use <%= %> to escape and add properties -> const b = 'grunt-tutorial'
+          banner: "const b = '<%= package.name %>';",
         },
         files: [
           {
             // Target multiple files with names ending in .js
             src: ["src/*.js"],
-            dest: "build/alljsfiles.min.js",
+            // Can also use template literals to name files
+            dest: "build/<%= package.name %>.min.js",
           },
         ],
       },
