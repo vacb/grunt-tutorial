@@ -3,6 +3,11 @@ module.exports = function (grunt) {
     package: grunt.file.readJSON("package.json"),
     // Refer to plugins
     uglify: {
+      // Uglify accepts an options property where we can specify options for the taks and
+      // things to do other than the main minification task
+      options: {
+        banner: "const b = 'in all targets';",
+      },
       target1: {
         files: [
           {
@@ -22,6 +27,10 @@ module.exports = function (grunt) {
       // Can add multiple targets - choose which target to run when running the task
       // eg: grunt uglify:target2 or grunt uglify: target1
       target2: {
+        // Can also add options in individual targets - this will have priority
+        options: {
+          banner: "const b = 'in target 2 only';",
+        },
         files: [
           {
             // Target multiple files with names ending in .js
