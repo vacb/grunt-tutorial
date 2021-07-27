@@ -42,6 +42,16 @@ module.exports = function (grunt) {
         ],
       },
     },
+    cssmin: {
+      target: {
+        files: [
+          {
+            src: "src/style.css",
+            dest: "build/style.min.css",
+          },
+        ],
+      },
+    },
   });
 
   // Load the plugin using the loadNpmTasks method
