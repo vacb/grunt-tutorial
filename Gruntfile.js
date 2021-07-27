@@ -65,4 +65,6 @@ module.exports = function (grunt) {
   // Can also set aliases for subtasks
   grunt.registerTask("compressPartials", "uglify:target1");
   grunt.registerTask("compressAll", "uglify:target2");
+
+  grunt.loadNpmTasks("grunt-contrib-cssmin");
 };
