@@ -89,6 +89,11 @@ module.exports = function (grunt) {
         },
       },
     },
+    myMultiTask: {
+      // Target can be a number, string, object etc
+      target1: "This is the first target",
+      target2: "This is the second target",
+    },
   });
 
   // Load the plugin using the loadNpmTasks method
@@ -133,4 +138,12 @@ module.exports = function (grunt) {
       grunt.task.run("htmlmin");
     }
   );
+
+  // More complicated tasks need to be registered as a multitask
+  // Name/description/function
+  // Also need to create a property in the config section with name of the task as key
+  grunt.registerMultiTask("myMultiTask", "My Multi Task", function () {
+    // Get the key (this.target) and the value (this.data)
+    grunt.log.writeln(this.target + " - " + this.data);
+  });
 };
